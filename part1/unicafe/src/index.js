@@ -27,7 +27,8 @@ const App = ()=>{
   const setToBad = ()=>{
     setBad(bad+1)
   }
-
+  
+  
   return(
     <React.Fragment>
        <h1>Give feedback</h1>
@@ -38,6 +39,9 @@ const App = ()=>{
        <p>good {good}</p>
        <p>neutral {neutral}</p>
        <p>bad {bad}</p>
+       <p>all {good + neutral + bad}</p>
+       <p>average {((good * 1)+(neutral *0 )+(bad * -1))/3}</p>
+       <p>positive {((good)/(good+neutral+bad))*100} %</p>
     </React.Fragment>
   )
 }
