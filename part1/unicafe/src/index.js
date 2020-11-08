@@ -10,7 +10,15 @@ const Button = ({handleClick,text})=>{
   )
 }
 
-const Statistics = ({good,neutral,bad,text1,text2,text3}) =>{
+const Statistics = ({good,neutral,bad}) =>{
+  if(good==0 && neutral==0 && bad==0){
+    return(
+      <>
+      <h2>Statistics</h2>
+       <h3>No feedback given</h3>
+      </>
+    )
+  }
   return(
     <>
       <h2>Statistics</h2>
@@ -22,6 +30,7 @@ const Statistics = ({good,neutral,bad,text1,text2,text3}) =>{
        <p>positive {((good)/(good+neutral+bad))*100} %</p>
     </>
   )
+  
 }
 
 const App = ()=>{
@@ -51,10 +60,7 @@ const App = ()=>{
        <Button handleClick={setToBad} text='bad'/>
        <Statistics good={good}
                    neutral={neutral}
-                   bad={bad}
-                   text1='all'
-                   text2='average'
-                   text3='positive'/>
+                   bad={bad}/>
     </React.Fragment>
   )
 }
