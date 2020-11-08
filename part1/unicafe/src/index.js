@@ -10,6 +10,20 @@ const Button = ({handleClick,text})=>{
   )
 }
 
+const Statistics = ({good,neutral,bad,text1,text2,text3}) =>{
+  return(
+    <>
+      <h2>Statistics</h2>
+       <p>good {good}</p>
+       <p>neutral {neutral}</p>
+       <p>bad {bad}</p>
+       <p>all {good + neutral + bad}</p>
+       <p>average {((good * 1)+(neutral *0 )+(bad * -1))/3}</p>
+       <p>positive {((good)/(good+neutral+bad))*100} %</p>
+    </>
+  )
+}
+
 const App = ()=>{
     
   const [good,setGood] = useState(0)
@@ -35,13 +49,12 @@ const App = ()=>{
        <Button handleClick={setToGood} text="good"/>
        <Button handleClick={setToNeutral} text='neutral'/>
        <Button handleClick={setToBad} text='bad'/>
-       <h2>Statistics</h2>
-       <p>good {good}</p>
-       <p>neutral {neutral}</p>
-       <p>bad {bad}</p>
-       <p>all {good + neutral + bad}</p>
-       <p>average {((good * 1)+(neutral *0 )+(bad * -1))/3}</p>
-       <p>positive {((good)/(good+neutral+bad))*100} %</p>
+       <Statistics good={good}
+                   neutral={neutral}
+                   bad={bad}
+                   text1='all'
+                   text2='average'
+                   text3='positive'/>
     </React.Fragment>
   )
 }
@@ -51,6 +64,6 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+   document.getElementById('root')
 );
 
