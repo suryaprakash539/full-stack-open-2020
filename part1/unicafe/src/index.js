@@ -34,9 +34,9 @@ const Statistics = ({good,neutral,bad}) =>{
       <StatisticLine value={neutral} text='neutral'/>
       <StatisticLine value={bad} text='bad'/>
       <StatisticLine value={good + neutral + bad} text='all'/>
-      <StatisticLine value={((good * 1)+(neutral *0 )+(bad * -1))/3} text='average'/>
-      <StatisticLine value={((good)/(good+neutral+bad))*100} text='positive'/>
-    </>
+      <StatisticLine value={(((good * 1)+(neutral *0 )+(bad * -1))/3).toFixed(1)} text='average'/>
+      <StatisticLine value={(((good)/(good+neutral+bad))*100).toFixed(1)} text='positive'/>
+     </>
   )
   
 }
