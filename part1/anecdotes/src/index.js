@@ -10,7 +10,7 @@ const Button =({handleClick,text})=>{
 }
 
 const Ancedote =(props)=>{
-  console.log(props)
+  //console.log(props)
   return(
     <>
     <h1>{props.title}</h1>
@@ -49,7 +49,7 @@ const App = ({anecdotes})=>{
               text='next anecdote'/>
       <Ancedote title='Ancedote with most votes'
                 selectedAnecdote={anecdotes[calculateWinner()]}
-                noOfVotes={votes[selected]}/>       
+                noOfVotes={votes[calculateWinner()]}/>       
              
     </React.Fragment>
   )
