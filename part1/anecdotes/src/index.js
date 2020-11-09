@@ -9,6 +9,17 @@ const Button =({handleClick,text})=>{
   )
 }
 
+const Ancedote =(props)=>{
+  console.log(props)
+  return(
+    <>
+    <h1>{props.title}</h1>
+      <h3>{props.selectedAnecdote}</h3>
+      <h4>has {props.noOfVotes} votes</h4>
+    </>
+  )
+}
+
 const App = ({anecdotes})=>{
   const [selected,setSelected] = useState(0)
   const [votes,setVotes] = useState(new Array(anecdotes.length).fill(0))
@@ -23,15 +34,22 @@ const App = ({anecdotes})=>{
      newVotes[selected]++
      setVotes(newVotes)
   }
+
+   const calculateWinner=()=> votes.indexOf(Math.max(...votes))
+  
  
   return(
     <React.Fragment>
-      <h3>{anecdotes[selected]}</h3>
-      <h4>has {votes[selected]} votes</h4>
+      <Ancedote title='Anecdote of the day'
+                selectedAnecdote={anecdotes[selected]}
+                noOfVotes={votes[selected]}/>
       <Button handleClick={handleVote}
               text='vote'/> 
       <Button handleClick={handleClick} 
               text='next anecdote'/>
+      <Ancedote title='Ancedote with most votes'
+                selectedAnecdote={anecdotes[calculateWinner()]}
+                noOfVotes={votes[selected]}/>       
              
     </React.Fragment>
   )
