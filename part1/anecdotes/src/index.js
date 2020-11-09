@@ -11,16 +11,28 @@ const Button =({handleClick,text})=>{
 
 const App = ({anecdotes})=>{
   const [selected,setSelected] = useState(0)
+  const [votes,setVotes] = useState(new Array(anecdotes.length).fill(0))
+
 
   const handleClick = ()=>{
     setSelected(Math.floor(Math.random()*anecdotes.length)) 
+  }
+
+  const handleVote = ()=>{
+     const newVotes=[...votes]
+     newVotes[selected]++
+     setVotes(newVotes)
   }
  
   return(
     <React.Fragment>
       <h3>{anecdotes[selected]}</h3>
+      <h4>has {votes[selected]} votes</h4>
+      <Button handleClick={handleVote}
+              text='vote'/> 
       <Button handleClick={handleClick} 
               text='next anecdote'/>
+             
     </React.Fragment>
   )
 }
