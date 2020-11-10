@@ -19,12 +19,24 @@ const Header = (props)=>{
 }
 
 const Content = (props)=>{
-  //console.log(props)
+ // console.log(props)
   return (
     <>
      {props.parts.map(part=> <Part key={part.id} 
                              name={part.name}
-                             exercises={part.exercises}/>)}
+                             exercises={part.exercises}/>)}  
+       <Total parts={props.parts}/>                                          
+    </>
+  )
+}
+
+const Total =(props)=>{
+  let totalExercises = props.parts.reduce((sum,part)=>{
+    return sum + part.exercises
+  },0)
+  return(
+    <>
+    <h3>Total exercises {totalExercises}</h3>
     </>
   )
 }
