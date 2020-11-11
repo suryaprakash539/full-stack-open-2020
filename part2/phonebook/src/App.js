@@ -1,17 +1,22 @@
 import React,{useState} from 'react'
+import Persons from './components/Persons'
 
 const App =()=>{
-    const [persons,setPersons] = useState([])
+    const [persons,setPersons] = useState([
+            { name: 'Arto Hellas', number: '040-123456' },
+            { name: 'Ada Lovelace', number: '39-44-5323523' },
+            { name: 'Dan Abramov', number: '12-43-234345' },
+            { name: 'Mary Poppendieck', number: '39-23-6423122' }
+          ])
 
     const [newNumber,setNewNumber] = useState('')
-
     const [newName,setNewName] = useState('')
+    const [text,setNewText] = useState('')
 
     const handleFormSubmit=(event)=>{
         event.preventDefault()
-         
-
-    const existingPerson = persons.some(person=>person.name===newName)
+        
+    let existingPerson = persons.some(person=>person.name===newName)
     if(existingPerson){
         window.alert(`${newName} is already added to phonebook`)
             setNewName('')
@@ -36,11 +41,21 @@ const App =()=>{
        setNewNumber(event.target.value)
     }
 
+    const handleTextChange=(event)=>{
+       setNewText(event.target.value) 
+
+    }
+
     return(
       <>
        <h1>Phonebook</h1>
-       {/* {console.log(persons)} */}
+       <p>filter shown with</p>
+       <input
+              value={text} 
+              onChange={handleTextChange}/>
+
        <form onSubmit={handleFormSubmit}>
+           <h2>add a new</h2>
            <div>
           Name: <input 
                  value={newName}
@@ -56,7 +71,9 @@ const App =()=>{
            </div>
        </form>
        <h2>Numbers</h2>
-       {persons.map(person=><h3 key={person.name}>{person.name} {person.number}</h3>)}
+       <Persons
+             persons={persons}
+             text={text}/>
       </>
     )
  }
