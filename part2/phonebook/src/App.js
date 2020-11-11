@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 import Persons from './components/Persons'
+import Filter from './components/Filter'
+import PersonForm from './components/PersonForm'
 
 const App =()=>{
     const [persons,setPersons] = useState([
@@ -42,6 +44,7 @@ const App =()=>{
     }
 
     const handleTextChange=(event)=>{
+        console.log(event.target.value)
        setNewText(event.target.value) 
 
     }
@@ -49,27 +52,16 @@ const App =()=>{
     return(
       <>
        <h1>Phonebook</h1>
-       <p>filter shown with</p>
-       <input
-              value={text} 
-              onChange={handleTextChange}/>
+       <Filter text={text}
+               handleTextChange={handleTextChange}/>
 
-       <form onSubmit={handleFormSubmit}>
-           <h2>add a new</h2>
-           <div>
-          Name: <input 
-                 value={newName}
-                 onChange={handleNameChange}/>
-           </div>
-           <div>
-          Number:<input
-                 value={newNumber}
-                 onChange={handleNumberChange}/>
-          </div> 
-           <div>
-               <button type='submit'>save</button>
-           </div>
-       </form>
+        <h2>Add a new</h2>
+        <PersonForm handleFormSubmit={handleFormSubmit}
+                    newName={newName}
+                    handleNameChange={handleNameChange}
+                    newNumber={newNumber}
+                    handleNumberChange={handleNumberChange}/>
+       
        <h2>Numbers</h2>
        <Persons
              persons={persons}
