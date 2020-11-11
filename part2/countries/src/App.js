@@ -28,7 +28,8 @@
 
            <Filter 
                   countries={countries}
-                  searchCountry={searchCountry}/>
+                  searchCountry={searchCountry}
+                  setSearchCountry={setSearchCountry}/>
          </React.Fragment>
      )
  }

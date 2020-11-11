@@ -1,7 +1,7 @@
 import React from 'react'
 
 const CountryDetails = (props)=>{
-    console.log(props.country)
+   // console.log(props.country)
   return(
       <>
        <h1>{props.country.name}</h1>
@@ -10,11 +10,11 @@ const CountryDetails = (props)=>{
        <h2>Languages</h2>
        <ul>
        { 
-           props.country.languages.map(language=><li>{language.name}</li>)
+           props.country.languages.map(language=><li key={language.name}>{language.name}</li>)
        }
        </ul>
        
-       <img src={props.country.flag} style={{width:100,height:150}}/>
+       <img src={props.country.flag} alt="country image" style={{width:100,height:150}}/>
       </>
   )
 }

@@ -1,8 +1,9 @@
 import React from 'react'
 import CountryDetails from './CountryDetails'
+import CountryList from './CountryList'
 
 const Filter = (props)=>{
-   // console.log(props)
+    //console.log(props)
     
     const FilteredCountries= props.countries.filter(country=>country.name.toLowerCase().includes(props.searchCountry.toLowerCase())) 
       
@@ -14,10 +15,9 @@ const Filter = (props)=>{
             ):(FilteredCountries.length===1?
                  <CountryDetails country={FilteredCountries[0]}/>
             :(
-                <ul>
-                     {FilteredCountries.map(country=><li key={country.name}>{country.name}</li>)}
-                </ul>
-              
+               
+            FilteredCountries.map(country=><CountryList key={country.name} country={country}
+                                             setSearchCountry={props.setSearchCountry}/>) 
             )
 
             )}
