@@ -6,8 +6,8 @@ const Course =(props)=>{
     //console.log(props)
      return( 
        <>
-       {props.courses.map(course=> <Header key={Math.random()} name={course.name}/>)}  
-       {props.courses.map(course=> <Content parts={course.parts}/>)} 
+       {props.courses.map(course=> <Header key={course.id} name={course.name}/>)}  
+       {props.courses.map(course=> <Content key={Math.random()} parts={course.parts}/>)} 
        </>
      )
   }

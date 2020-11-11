@@ -12,7 +12,7 @@ const App = () => {
   const courses = [
     {
       name: 'Half Stack application development',
-      id: 1,
+      id: 1000,
       parts: [
         {
           name: 'Fundamentals of React',
@@ -38,7 +38,7 @@ const App = () => {
     }, 
     {
       name: 'Node.js',
-      id: 2,
+      id: 2000,
       parts: [
         {
           name: 'Routing',
