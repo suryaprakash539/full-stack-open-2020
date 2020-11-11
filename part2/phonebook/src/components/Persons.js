@@ -2,7 +2,7 @@ import React from 'react'
 import Person from './Person'
 
 const Persons=(props)=>{
-    console.log(props)
+   // console.log(props)
     const {persons,text} = props
     let filteredPersons = persons.filter(person=> person.name.toLowerCase().includes(text.toLowerCase()))
   return (
