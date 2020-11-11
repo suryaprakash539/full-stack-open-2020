@@ -9,6 +9,14 @@ const App =()=>{
 
     const handleFormSubmit=(event)=>{
         event.preventDefault()
+         
+         for(let i=0;i<persons.length;i++){
+             if(persons[i].name===newName){
+                 window.alert(`${newName} is already added to phonebook`)
+                 setNewName('')
+                 return;
+             }
+         }
         const personObject={
             name:newName
         }
