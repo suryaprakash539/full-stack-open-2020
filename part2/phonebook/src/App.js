@@ -2,8 +2,10 @@ import React,{useState,useEffect} from 'react'
 import Persons from './components/Persons'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
+import Notification from './components/Notification'
 
 import personService from './services/persons'
+import "./index.css"
 
 const App =()=>{
     const [persons,setPersons] = useState([])
@@ -11,6 +13,7 @@ const App =()=>{
     const [newNumber,setNewNumber] = useState('')
     const [newName,setNewName] = useState('')
     const [text,setNewText] = useState('')
+    const [notification,setNotification]=useState('...some error happened')
 
     useEffect(()=>{
         console.log('effect')
@@ -39,6 +42,10 @@ const App =()=>{
             .then((returnedPerson)=>{
                setPersons(persons.map(person=>person.id!==updatePerson.id?person:returnedPerson))
                setNewNumber('')
+               setNotification(`${changedPerson.name} number has been updated`)
+               setTimeout(()=>{
+                   setNotification(null)
+               },3000)
             })
        }
 
@@ -57,6 +64,10 @@ const App =()=>{
               setPersons(persons.concat(returnedPerson))
               setNewName('')
               setNewNumber('')
+              setNotification(`${returnedPerson.name} is added`)
+              setTimeout(()=>{
+                  setNotification(null)
+              },3000)
          })
           
 
@@ -86,6 +97,10 @@ const App =()=>{
          .then((returnedPerson)=>{
             console.log(returnedPerson)
             setPersons(persons.filter(person=>person.id!==id))
+            setNotification(`${name} has been deleted`)
+            setTimeout(()=>{
+              setNotification(null)
+            },5000)
          })
          .catch(err=>{
              console.log(err)
@@ -96,6 +111,7 @@ const App =()=>{
     return(
       <>
        <h1>Phonebook</h1>
+       <Notification message={notification}/>
        <Filter text={text}
                handleTextChange={handleTextChange}/>
 
