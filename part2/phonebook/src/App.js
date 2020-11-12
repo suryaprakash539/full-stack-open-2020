@@ -64,6 +64,21 @@ const App =()=>{
 
     }
 
+    const handleDelete=(id,name)=>{
+        const confirmDelete = window.confirm(`Delete ${name}?`)
+        if(confirmDelete){
+       personService
+         .destroy(id)
+         .then((returnedPerson)=>{
+            console.log(returnedPerson)
+            setPersons(persons.filter(person=>person.id!==id))
+         })
+         .catch(err=>{
+             console.log(err)
+         })
+        }
+    }
+
     return(
       <>
        <h1>Phonebook</h1>
@@ -82,7 +97,8 @@ const App =()=>{
            <>
            <Persons
            persons={persons}
-           text={text}/>
+           text={text}
+           handleDelete={handleDelete}/>
           </>
        ):(<>
        <h1>Loading...</h1>
