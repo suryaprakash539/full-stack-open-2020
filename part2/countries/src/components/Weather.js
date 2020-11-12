@@ -13,7 +13,7 @@ const Weather = (props)=>{
          axios
              .get('http://api.weatherstack.com/current',{params})
              .then(response=>{
-                 console.log(response.data)
+                console.log(response.data)
                  setData(response.data.current)
              })
     },[props.country])
